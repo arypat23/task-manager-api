@@ -23,12 +23,19 @@ export async function findUserByEmail(email) {
 }
 
 export async function findUserById(id) {
-  return prisma.user.findUnique({ where: { id } });
+  return prisma.user.findUnique({
+    where: { id },
+    omit: { password: true },
+  });
 }
 
 export async function updateUserById(id, data) {
   try {
-    return await prisma.user.update({ where: { id }, data });
+    return await prisma.user.update({
+      where: { id },
+      data,
+      omit: { password: true },
+    });
   } catch (error) {
     if (error.code === "P2002") {
       const err = new Error("Email or username already exists");
