@@ -9,6 +9,7 @@ const router = express.Router();
  *   post:
  *     summary: Create a new user account
  *     tags: [Auth]
+ *     security: []
  *     requestBody:
  *       required: true
  *       content:
@@ -42,6 +43,7 @@ router.post("/signup", signup);
  *   post:
  *     summary: Login and receive a JWT token
  *     tags: [Auth]
+ *     security: []
  *     requestBody:
  *       required: true
  *       content:
