@@ -1,4 +1,13 @@
-import { getUser, updateUser, deleteUser } from "../services/userService.js";
+import { getAllUsers, getUser, updateUser, deleteUser } from "../services/userService.js";
+
+export async function getAllUsersHandler(req, res, next) {
+  try {
+    const users = await getAllUsers();
+    res.status(200).json(users);
+  } catch (error) {
+    next(error);
+  }
+}
 
 export async function getUserByIdHandler(req, res, next) {
   try {

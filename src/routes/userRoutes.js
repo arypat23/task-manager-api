@@ -1,8 +1,24 @@
 import express from "express";
 import { authenticate } from "../middleware/authMiddleware.js";
-import { getUserByIdHandler, updateUserByIdHandler, deleteUserByIdHandler } from "../controllers/userController.js";
+import { getAllUsersHandler, getUserByIdHandler, updateUserByIdHandler, deleteUserByIdHandler } from "../controllers/userController.js";
 
 const router = express.Router();
+
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: Get all users
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: List of all users
+ *       401:
+ *         description: Unauthorized
+ */
+router.get("/", authenticate, getAllUsersHandler);
 
 /**
  * @swagger

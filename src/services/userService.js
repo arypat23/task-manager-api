@@ -1,5 +1,9 @@
 import bcrypt from "bcrypt";
-import { findUserById, updateUserById, deleteUserById } from "../repositories/userRepo.js";
+import { findAllUsers, findUserById, updateUserById, deleteUserById } from "../repositories/userRepo.js";
+
+export async function getAllUsers() {
+  return findAllUsers();
+}
 
 export async function getUser(id) {
   return findUserById(id);
